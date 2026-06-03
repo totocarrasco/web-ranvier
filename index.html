@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranvier Tech — Soluciones TI a Medida para Empresas</title>
+  <meta name="description" content="En Ranvier Tech ofrecemos desarrollo de software personalizado, inteligencia artificial, ciberseguridad ISO 27001 y soporte técnico especializado para empresas públicas y privadas." />
+  <meta name="keywords" content="desarrollo de software, inteligencia artificial, ISO 27001, soporte técnico, consultoría TI, Chile" />
+  <meta property="og:title" content="Ranvier Tech — Soluciones TI a Medida" />
+  <meta property="og:description" content="Desarrollo de software, IA y soporte TI especializado para empresas públicas y privadas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.ranviertech.com" />
+  <link rel="canonical" href="https://www.ranviertech.com" />
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #111827;
+      background: #ffffff;
+    }
+
+    /* ── Color tokens ── */
+    :root {
+      --blue:        #1a7fe8;
+      --blue-dark:   #1470d4;
+      --blue-light:  #e6f1fb;
+      --blue-text:   #185fa5;
+      --border:      rgba(0,0,0,0.10);
+      --border-md:   rgba(0,0,0,0.18);
+      --bg-alt:      #f8f9fb;
+      --text:        #111827;
+      --text-muted:  #6b7280;
+      --radius-md:   8px;
+      --radius-lg:   12px;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4, h5 { font-weight: 500; line-height: 1.3; color: #111827; }
+    h1 { font-size: clamp(28px, 5vw, 42px); }
+    h2 { font-size: clamp(22px, 3vw, 28px); }
+    h3 { font-size: 16px; }
+    p  { color: var(--text-muted); }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Layout helpers ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .section    { padding: 5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section-alt { background: var(--bg-alt); }
+    .section-alt > .container,
+    .section-alt-wrap { background: var(--bg-alt); padding: 5rem 0; }
+
+    .label {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      color: var(--blue); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 560px; margin-top: 0.5rem;
+    }
+    .center { text-align: center; }
+    .center .subtitle { margin-left: auto; margin-right: auto; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: #fff;
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--blue); color: #fff;
+      border: none; padding: 9px 20px;
+      border-radius: var(--radius-md); font-size: 14px;
+      font-weight: 500; cursor: pointer; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 24px; color: var(--text); }
+    .mobile-menu { display: none; flex-direction: column; gap: 1rem; padding: 1rem 1.5rem 1.5rem; background: #fff; border-bottom: 0.5px solid var(--border); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 15px; color: var(--text-muted); }
+    .mobile-menu .nav-cta { width: 100%; text-align: center; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--blue);
+      background: var(--blue-light); padding: 5px 14px;
+      border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    .hero h1 { margin-bottom: 1rem; }
+    .hero h1 span { color: var(--blue); }
+    .hero p { font-size: 16px; max-width: 520px; margin: 0 auto 2rem; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: #fff; border: none;
+      padding: 12px 26px; border-radius: var(--radius-md);
+      font-size: 15px; font-weight: 500; cursor: pointer; transition: background .2s;
+    }
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 0.5px solid var(--border-md);
+      padding: 12px 26px; border-radius: var(--radius-md);
+      font-size: 15px; cursor: pointer; transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px; margin-top: 3.5rem;
+    }
+    .stat {
+      background: var(--bg-alt); border-radius: var(--radius-md);
+      padding: 1.25rem 1rem; text-align: center;
+    }
+    .stat-n { font-size: 26px; font-weight: 600; color: var(--blue); }
+    .stat-l { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── Section: Servicios ── */
+    .services-wrap { background: var(--bg-alt); }
+    .services-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; margin-top: 2.5rem;
+    }
+    .card {
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .card-icon {
+      width: 42px; height: 42px;
+      background: var(--blue-light);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .card-icon i { font-size: 20px; color: var(--blue); }
+    .card h3 { margin-bottom: 0.5rem; }
+    .card p { font-size: 14px; line-height: 1.6; }
+
+    /* ── Section: Consultoría ── */
+    .consult-section { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .consult-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 2.5rem;
+    }
+    .consult-card {
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .consult-card.featured { border: 2px solid var(--blue); }
+    .badge-pop {
+      display: inline-block; font-size: 12px; font-weight: 600;
+      background: var(--blue-light); color: var(--blue-text);
+      padding: 3px 12px; border-radius: var(--radius-md);
+    }
+    .consult-emoji { font-size: 32px; line-height: 1; }
+    .consult-role { font-size: 13px; color: var(--blue); font-weight: 500; }
+    .consult-card h3 { font-size: 17px; }
+    .consult-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px; padding: 3px 10px; border-radius: 999px;
+      background: var(--bg-alt); color: var(--text-muted);
+    }
+    .qty-row { display: flex; align-items: center; gap: 10px; }
+    .qty-label { font-size: 13px; color: var(--text-muted); }
+    .qty-ctrl { display: flex; align-items: center; gap: 8px; }
+    .qty-btn {
+      width: 30px; height: 30px;
+      border: 0.5px solid var(--border-md);
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      cursor: pointer; font-size: 18px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text); transition: background .15s;
+    }
+    .qty-btn:hover { background: #e5e7eb; }
+    .qty-n { font-size: 16px; font-weight: 500; min-width: 24px; text-align: center; }
+    .consult-btn {
+      margin-top: auto; width: 100%; padding: 11px;
+      border-radius: var(--radius-md); font-size: 14px; font-weight: 500;
+      cursor: pointer; border: none;
+      background: var(--blue); color: #fff; transition: background .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .consult-btn:hover { background: var(--blue-dark); }
+
+    /* ── Section: Por qué ── */
+    .why-wrap { background: var(--bg-alt); }
+    .why-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; margin-top: 2.5rem;
+    }
+    .why-item { display: flex; flex-direction: column; gap: 8px; }
+    .why-item i { font-size: 24px; color: var(--blue); }
+    .why-item h4 { font-size: 15px; font-weight: 500; color: var(--text); }
+    .why-item p { font-size: 14px; line-height: 1.6; }
+
+    /* ── Section: Testimonios ── */
+    .testimonial-section { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; text-align: center; }
+    .testimonial {
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      max-width: 640px; margin: 2rem auto 0;
+      text-align: left;
+    }
+    .stars { color: #e8a020; font-size: 16px; margin-bottom: 1rem; }
+    .testimonial blockquote { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: var(--blue-text); flex-shrink: 0;
+    }
+    .author-name { font-size: 14px; font-weight: 500; color: var(--text); }
+    .author-role { font-size: 13px; color: var(--text-muted); }
+
+    /* ── Section: Equipo ── */
+    .team-wrap { background: var(--bg-alt); }
+    .team-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-top: 2.5rem;
+    }
+    .team-card {
+      background: #fff;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem; text-align: center;
+    }
+    .team-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 600;
+      margin: 0 auto 14px;
+    }
+    .team-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .team-card p { font-size: 13px; }
+
+    /* ── Section: Contacto ── */
+    .contact-section { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem; margin-top: 2.5rem; align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+    .contact-item i { font-size: 20px; color: var(--blue); margin-top: 2px; flex-shrink: 0; }
+    .contact-item h5 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+    .contact-item p { font-size: 14px; }
+    .form { display: flex; flex-direction: column; gap: 12px; }
+    .form input,
+    .form select,
+    .form textarea {
+      width: 100%; padding: 11px 14px;
+      border: 0.5px solid var(--border-md);
+      border-radius: var(--radius-md);
+      font-size: 14px; font-family: inherit;
+      color: var(--text); background: #fff;
+      transition: border-color .2s;
+    }
+    .form input:focus,
+    .form select:focus,
+    .form textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,127,232,0.12);
+    }
+    .form textarea { resize: vertical; min-height: 110px; }
+    .form-btn {
+      background: var(--blue); color: #fff; border: none;
+      padding: 12px; border-radius: var(--radius-md);
+      font-size: 15px; font-weight: 500; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background .2s;
+    }
+    .form-btn:hover { background: var(--blue-dark); }
+    .form-success {
+      display: none; background: #eaf3de; color: #3b6d11;
+      border: 0.5px solid #97c459; border-radius: var(--radius-md);
+      padding: 12px 16px; font-size: 14px; text-align: center;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-size: 16px; font-weight: 600; }
+    .footer-logo span { color: var(--blue); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-socials { display: flex; gap: 16px; }
+    .footer-socials a { color: var(--text-muted); font-size: 20px; transition: color .2s; }
+    .footer-socials a:hover { color: var(--blue); }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: #111827; color: #fff;
+      padding: 12px 20px; border-radius: var(--radius-md);
+      font-size: 14px; opacity: 0; pointer-events: none;
+      transition: opacity .3s; z-index: 999;
+    }
+    .toast.show { opacity: 1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: block; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header>
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <a class="nav-logo" href="#inicio" aria-label="Ranvier Tech inicio">Ranvier<span>Tech</span></a>
+        <ul class="nav-links" role="list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#consultoria">Horas de soporte</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="nav-cta" onclick="scrollTo('consultoria')">Comprar horas</button>
+        <button class="nav-hamburger" aria-label="Abrir menú" onclick="toggleMenu()">
+          <i class="ti ti-menu-2"></i>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+      <a href="#servicios" onclick="closeMenu()">Servicios</a>
+      <a href="#consultoria" onclick="closeMenu()">Horas de soporte</a>
+      <a href="#equipo" onclick="closeMenu()">Equipo</a>
+      <a href="#contacto" onclick="closeMenu()">Contacto</a>
+      <button class="nav-cta" onclick="scrollTo('consultoria'); closeMenu()">Comprar horas</button>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-badge" aria-hidden="true">
+        <i class="ti ti-shield-check"></i> Empresa de tecnología certificada
+      </div>
+      <h1>Soluciones TI a medida para <span>hacer crecer tu empresa</span></h1>
+      <p>Desarrollo de software, inteligencia artificial, ciberseguridad y soporte técnico especializado para empresas públicas y privadas.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="scrollTo('servicios')">
+          <i class="ti ti-arrow-right" aria-hidden="true"></i> Ver servicios
+        </button>
+        <button class="btn-secondary" onclick="scrollTo('consultoria')">
+          Comprar horas de soporte
+        </button>
+      </div>
+      <div class="stats" role="list" aria-label="Estadísticas">
+        <div class="stat" role="listitem">
+          <div class="stat-n">+50</div>
+          <div class="stat-l">Proyectos entregados</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="stat-n">+30</div>
+          <div class="stat-l">Empresas clientes</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="stat-n">3</div>
+          <div class="stat-l">Áreas de especialidad</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="stat-n">100%</div>
+          <div class="stat-l">Soporte remoto y en terreno</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICIOS ── -->
+    <div class="services-wrap">
+      <section class="services-inner" id="servicios">
+        <span class="label">Lo que hacemos</span>
+        <h2>Servicios tecnológicos especializados</h2>
+        <p class="subtitle">Adaptamos cada solución a los procesos y objetivos específicos de tu organización.</p>
+        <div class="grid-cards">
+          <article class="card">
+            <div class="card-icon"><i class="ti ti-code" aria-hidden="true"></i></div>
+            <h3>Desarrollo de software</h3>
+            <p>Aplicaciones a medida, integraciones y automatización de procesos para optimizar tu operación.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="ti ti-brain" aria-hidden="true"></i></div>
+            <h3>Inteligencia artificial</h3>
+            <p>Implementación de IA en tus flujos de trabajo: análisis predictivo, automatización y asistentes inteligentes.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="ti ti-lock" aria-hidden="true"></i></div>
+            <h3>Ciberseguridad / ISO 27001</h3>
+            <p>Diagnóstico, implementación y acompañamiento en seguridad de la información bajo estándares internacionales.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="ti ti-headset" aria-hidden="true"></i></div>
+            <h3>Soporte técnico</h3>
+            <p>Soporte remoto y en terreno con tiempos de respuesta garantizados para mantener tu operación sin interrupciones.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+            <h3>Business Intelligence</h3>
+            <p>Sistematización de reportes, dashboards y visualización de datos para una mejor toma de decisiones.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="ti ti-settings" aria-hidden="true"></i></div>
+            <h3>Consultoría TI</h3>
+            <p>Asesoramiento estratégico para definir la hoja de ruta tecnológica de tu organización.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── HORAS DE CONSULTORÍA ── -->
+    <section class="consult-section" id="consultoria">
+      <span class="label">Soporte por horas</span>
+      <h2>Compra horas de consultoría especializada</h2>
+      <p class="subtitle">Accede a nuestros expertos cuando lo necesitas. Sin contratos de largo plazo. Elige la cantidad de horas según tus requerimientos.</p>
+      <div class="consult-grid">
+
+        <!-- ISO 27001 -->
+        <article class="consult-card">
+          <div class="consult-emoji" aria-hidden="true">🛡️</div>
+          <div>
+            <div class="consult-role">Consultor certificado</div>
+            <h3>Especialista ISO 27001</h3>
+          </div>
+          <p class="consult-desc">Diagnóstico de brechas, implementación del SGSI, gestión de riesgos y preparación para auditorías bajo la norma ISO/IEC 27001.</p>
+          <div class="tags">
+            <span class="tag">SGSI</span>
+            <span class="tag">Gestión de riesgos</span>
+            <span class="tag">Auditoría</span>
+            <span class="tag">Compliance</span>
+          </div>
+          <div class="qty-row">
+            <span class="qty-label">Horas:</span>
+            <div class="qty-ctrl" role="group" aria-label="Cantidad de horas">
+              <button class="qty-btn" aria-label="Reducir horas" onclick="changeQty('q1',-1)">−</button>
+              <span class="qty-n" id="q1" aria-live="polite">1</span>
+              <button class="qty-btn" aria-label="Aumentar horas" onclick="changeQty('q1',1)">+</button>
+            </div>
+          </div>
+          <button class="consult-btn" onclick="consultarPrecio('ISO 27001','q1')">
+            <i class="ti ti-mail" aria-hidden="true"></i> Consultar precio
+          </button>
+        </article>
+
+        <!-- Desarrollador -->
+        <article class="consult-card featured" aria-label="Opción más solicitada">
+          <span class="badge-pop">Más solicitado</span>
+          <div class="consult-emoji" aria-hidden="true">💻</div>
+          <div>
+            <div class="consult-role">Desarrollo de software</div>
+            <h3>Desarrollador especialista</h3>
+          </div>
+          <p class="consult-desc">Desarrollo de funcionalidades, integraciones de API, automatizaciones y revisión de código para proyectos de software a medida.</p>
+          <div class="tags">
+            <span class="tag">Backend</span>
+            <span class="tag">Frontend</span>
+            <span class="tag">APIs</span>
+            <span class="tag">Automatización</span>
+          </div>
+          <div class="qty-row">
+            <span class="qty-label">Horas:</span>
+            <div class="qty-ctrl" role="group" aria-label="Cantidad de horas">
+              <button class="qty-btn" aria-label="Reducir horas" onclick="changeQty('q2',-1)">−</button>
+              <span class="qty-n" id="q2" aria-live="polite">1</span>
+              <button class="qty-btn" aria-label="Aumentar horas" onclick="changeQty('q2',1)">+</button>
+            </div>
+          </div>
+          <button class="consult-btn" onclick="consultarPrecio('Desarrollador especialista','q2')">
+            <i class="ti ti-mail" aria-hidden="true"></i> Consultar precio
+          </button>
+        </article>
+
+        <!-- IA -->
+        <article class="consult-card">
+          <div class="consult-emoji" aria-hidden="true">🤖</div>
+          <div>
+            <div class="consult-role">Inteligencia artificial</div>
+            <h3>Especialista en IA</h3>
+          </div>
+          <p class="consult-desc">Diseño e implementación de soluciones con IA: modelos predictivos, NLP, automatización inteligente y optimización de procesos con ML.</p>
+          <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Automatización IA</span>
+            <span class="tag">LLMs</span>
+          </div>
+          <div class="qty-row">
+            <span class="qty-label">Horas:</span>
+            <div class="qty-ctrl" role="group" aria-label="Cantidad de horas">
+              <button class="qty-btn" aria-label="Reducir horas" onclick="changeQty('q3',-1)">−</button>
+              <span class="qty-n" id="q3" aria-live="polite">1</span>
+              <button class="qty-btn" aria-label="Aumentar horas" onclick="changeQty('q3',1)">+</button>
+            </div>
+          </div>
+          <button class="consult-btn" onclick="consultarPrecio('Especialista en IA','q3')">
+            <i class="ti ti-mail" aria-hidden="true"></i> Consultar precio
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── POR QUÉ ELEGIRNOS ── -->
+    <div class="why-wrap">
+      <section class="why-inner">
+        <span class="label">Nuestras ventajas</span>
+        <h2>¿Por qué elegir Ranvier Tech?</h2>
+        <div class="why-grid">
+          <div class="why-item">
+            <i class="ti ti-buildings" aria-hidden="true"></i>
+            <h4>Sector público y privado</h4>
+            <p>Experiencia trabajando con organismos públicos y empresas privadas de todos los sectores.</p>
+          </div>
+          <div class="why-item">
+            <i class="ti ti-clock" aria-hidden="true"></i>
+            <h4>Flexibilidad de horas</h4>
+            <p>Contrata solo las horas que necesitas, sin contratos mínimos ni compromisos de largo plazo.</p>
+          </div>
+          <div class="why-item">
+            <i class="ti ti-certificate" aria-hidden="true"></i>
+            <h4>Especialistas certificados</h4>
+            <p>Equipo con certificaciones internacionales en ciberseguridad, desarrollo y herramientas de IA.</p>
+          </div>
+          <div class="why-item">
+            <i class="ti ti-map-pin" aria-hidden="true"></i>
+            <h4>Soporte remoto y en terreno</h4>
+            <p>Atendemos de forma remota y presencial según las necesidades de tu empresa.</p>
+          </div>
+          <div class="why-item">
+            <i class="ti ti-trending-up" aria-hidden="true"></i>
+            <h4>Orientados al negocio</h4>
+            <p>Entregamos valor real: nuestras soluciones están diseñadas para impactar tus resultados.</p>
+          </div>
+          <div class="why-item">
+            <i class="ti ti-headset" aria-hidden="true"></i>
+            <h4>Soporte continuo</h4>
+            <p>Acompañamiento post-implementación para garantizar el éxito y la continuidad operacional.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── TESTIMONIO ── -->
+    <section class="testimonial-section">
+      <span class="label">Clientes satisfechos</span>
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="testimonial">
+        <div class="stars" aria-label="5 estrellas">★★★★★</div>
+        <blockquote>
+          "Ranvier Tech transformó nuestros procesos con su software a medida y soporte excepcional.
+          El equipo demostró un alto nivel técnico y una capacidad de respuesta que superó nuestras expectativas."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="avatar" aria-hidden="true">JP</div>
+          <div>
+            <div class="author-name">Juan Pérez</div>
+            <div class="author-role">Gerente de Tecnología</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EQUIPO ── -->
+    <div class="team-wrap">
+      <section class="team-inner" id="equipo">
+        <span class="label">Nuestro equipo</span>
+        <h2>Especialistas a tu servicio</h2>
+        <p class="subtitle">Profesionales con experiencia en proyectos de alta complejidad para empresas de todos los tamaños.</p>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar" style="background:#e6f1fb; color:#185fa5;" aria-hidden="true">DEV</div>
+            <h4>Equipo de Desarrollo</h4>
+            <p>Software a medida y arquitectura de sistemas</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar" style="background:#fbeaf0; color:#993556;" aria-hidden="true">IA</div>
+            <h4>Equipo de IA</h4>
+            <p>Machine learning, NLP y automatización inteligente</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar" style="background:#eaf3de; color:#3b6d11;" aria-hidden="true">SEC</div>
+            <h4>Equipo de Ciberseguridad</h4>
+            <p>ISO 27001, SGSI y gestión de riesgos</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar" style="background:#faeeda; color:#854f0b;" aria-hidden="true">BI</div>
+            <h4>Equipo de BI</h4>
+            <p>Dashboards, reportes y análisis de datos</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── CONTACTO ── -->
+    <section class="contact-section" id="contacto">
+      <span class="label">Hablemos</span>
+      <h2>Contáctanos</h2>
+      <p class="subtitle">Cuéntanos sobre tu proyecto o consulta. Respondemos dentro de 24 horas hábiles.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="ti ti-mail" aria-hidden="true"></i>
+            <div>
+              <h5>Correo electrónico</h5>
+              <p><a href="mailto:contacto@ranviertech.com" style="color:var(--blue);">contacto@ranviertech.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="ti ti-phone" aria-hidden="true"></i>
+            <div>
+              <h5>Teléfono</h5>
+              <!-- TODO: reemplazar con número real -->
+              <p>+56 9 XXXX XXXX</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="ti ti-map-pin" aria-hidden="true"></i>
+            <div>
+              <h5>Cobertura</h5>
+              <p>Atención remota y presencial en todo Chile</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="ti ti-clock" aria-hidden="true"></i>
+            <div>
+              <h5>Horario de atención</h5>
+              <p>Lunes a viernes, 9:00–18:00 hrs</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!-- TODO: reemplazar action con endpoint real (Formspree, EmailJS, backend propio) -->
+          <form class="form" id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+            <input type="text"  name="nombre"  placeholder="Nombre completo"      required aria-label="Nombre completo" />
+            <input type="email" name="email"   placeholder="Correo electrónico"   required aria-label="Correo electrónico" />
+            <input type="text"  name="empresa" placeholder="Empresa"              aria-label="Empresa" />
+            <select name="tipo" required aria-label="Tipo de consulta">
+              <option value="" disabled selected>Tipo de consulta</option>
+              <option value="desarrollo">Desarrollo de software</option>
+              <option value="ia">Inteligencia artificial</option>
+              <option value="iso">ISO 27001 / Ciberseguridad</option>
+              <option value="soporte">Soporte técnico</option>
+              <option value="horas">Horas de consultoría</option>
+              <option value="bi">Business Intelligence</option>
+              <option value="otro">Otro</option>
+            </select>
+            <textarea name="mensaje" placeholder="Describe tu necesidad o proyecto..." required aria-label="Mensaje"></textarea>
+            <button type="submit" class="form-btn" id="formBtn">
+              Enviar mensaje <i class="ti ti-send" aria-hidden="true"></i>
+            </button>
+            <div class="form-success" id="formSuccess" role="status">
+              <i class="ti ti-circle-check" aria-hidden="true"></i>
+              ¡Mensaje enviado! Nos pondremos en contacto contigo pronto.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Ranvier<span>Tech</span></div>
+        <p class="footer-copy">Soluciones TI a medida para empresas</p>
+      </div>
+      <p class="footer-copy">© 2025 Ranvier Tech. Todos los derechos reservados.</p>
+      <div class="footer-socials">
+        <!-- TODO: reemplazar con URLs reales -->
+        <a href="https://www.linkedin.com/company/ranviertech" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="ti ti-brand-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/ranviertech" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="ti ti-brand-instagram"></i>
+        </a>
+        <a href="https://x.com/ranviertech" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <i class="ti ti-brand-x"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Toast ── -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ── Scripts ── -->
+  <script>
+    /* ── Helpers ── */
+    function scrollTo(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ── Mobile menu ── */
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    /* ── Qty control ── */
+    function changeQty(id, delta) {
+      const el = document.getElementById(id);
+      let v = parseInt(el.textContent) + delta;
+      if (v < 1)  v = 1;
+      if (v > 99) v = 99;
+      el.textContent = v;
+    }
+
+    /* ── Consultar precio ── */
+    function consultarPrecio(especialidad, qtyId) {
+      const horas = document.getElementById(qtyId).textContent;
+      const asunto = encodeURIComponent('Consulta de precio — ' + especialidad + ' (' + horas + ' hora(s))');
+      const cuerpo = encodeURIComponent(
+        'Hola equipo Ranvier Tech,\n\n' +
+        'Me interesa conocer el precio para contratar ' + horas + ' hora(s) con un ' + especialidad + '.\n\n' +
+        'Nombre:\nEmpresa:\nTeléfono:\n\nGracias.'
+      );
+      window.location.href = 'mailto:contacto@ranviertech.com?subject=' + asunto + '&body=' + cuerpo;
+    }
+
+    /* ── Formulario de contacto ── */
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn  = document.getElementById('formBtn');
+      const successEl = document.getElementById('formSuccess');
+
+      // Validación básica
+      const nombre  = form.nombre.value.trim();
+      const email   = form.email.value.trim();
+      const tipo    = form.tipo.value;
+      const mensaje = form.mensaje.value.trim();
+
+      if (!nombre || !email || !tipo || !mensaje) {
+        showToast('Por favor completa todos los campos obligatorios.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showToast('Ingresa un correo electrónico válido.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      /*
+       * TODO: reemplazar este bloque con tu integración real.
+       * Opciones:
+       *   1. Formspree:  fetch('https://formspree.io/f/TU_ID', { method:'POST', body: new FormData(form) })
+       *   2. EmailJS:    emailjs.sendForm('SERVICE_ID','TEMPLATE_ID', form)
+       *   3. Backend:    fetch('/api/contacto', { method:'POST', body: JSON.stringify({...}) })
+       *
+       * Simulación para UAT:
+       */
+      setTimeout(function() {
+        btn.style.display = 'none';
+        successEl.style.display = 'block';
+        form.reset();
+      }, 1200);
+    }
+
+    /* ── Toast helper ── */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function() { t.classList.remove('show'); }, 3500);
+    }
+  </script>
+
+</body>
+</html>
